@@ -1,37 +1,44 @@
-import { useEffect, useState } from "react"
+import axios from "axios";
+import { useEffect, useState } from "react";
+import "./App.css"
 
 function App() {
 
-  const [gatos, setGatos] = useState();
+   const API_URL = import.meta.env.VITE_API_URL
 
-  useEffect(()=>{
-    fetch("https://cataas.com/api/cats?tags=cute")
-    .then((resp)=> resp.json())
-    .then((data)=>{
+  //console.log(""+API_URL);
+  const [criptos, setCriptos] = useState();
 
-      setGatos(data)
-      //console.log(data);
-    })
-    .catch(()=>{
-      console.error("La petición falló");
-    })
+  useEffect(() => {
+    //fetch("https://api.coincap.io/v2/assets")
+    axios.get(`${API_URL}assets`)
+      //.then((resp) => resp.json())
+      //Axios devuelve objeto data
+      .then((data) => {
+        //console.log(data);
+        setCriptos(data.data.data);
+        //console.log(data);
+      })
+      .catch(() => {
+        console.error("La petición falló");
+      });
+  }, []);
 
-  },[])
-  
+
+  if(!criptos) return <span>Cargando...</span>
 
   return (
     <>
-      <h1>Lista Gatos</h1>
+      <h1>Lista Monedas</h1>
       <ol>
-        {gatos.map(({id,owner}) => {
-          <li>ID: {id} Dueño: {owner}</li>
-        })}
-
-       
+        {criptos.map(({id, name, priceUsd }) => (
+          <li key={id}>
+            Moneda: {name} Precio: {priceUsd}
+          </li>
+        ))}
       </ol>
-      
     </>
-  )
+  );
 }
 
-export default App
+export default App;
