@@ -1,15 +1,18 @@
-//Importancia de Emmet 
+//Importancia de Emmet
 
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import "./Home.css";
 
-const Home = () =>{
-    return(
-        <>
-            <h1>Hola, bienvenido a Mercado Criptomonedas</h1>
-            <p>Conoce las 100 criptos mas utilizadas</p>
-            <Link to="criptomonedas">Ver Criptomonedas</Link>
-        </>
-    )
-}
+const Home = () => {
+  return (
+    <div className="home-container">
+      <h1 className="title">Bienvenido a EDmarket</h1>
+      <p className="subtitle">Cónoce las 100 criptos más usadas</p>
+      <Link to="/criptomonedas" className="link">
+        Ver criptomonedas
+      </Link>
+    </div>
+  );
+};
 
-export default Home
+export default Home;
