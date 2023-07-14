@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 import "./Cripto.css";
 
-const Cripto = ({ name, priceUSD, symbol, changePercent24Hr }) => {
+const Cripto = ({ name, priceUSD, symbol, changePercent24Hr, id }) => {
   return (
     <div className="cripto">
       <h2>{name}</h2>
@@ -26,6 +27,7 @@ const Cripto = ({ name, priceUSD, symbol, changePercent24Hr }) => {
             {parseFloat(changePercent24Hr).toFixed(3)}%
           </span>
         </p>
+        <Link to={`/criptomonedas/${id}`}>Ver detalle</Link>
       </div>
     </div>
   );

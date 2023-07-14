@@ -1,14 +1,14 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./Menu.css";
 const Menu = () => {
   return (
     <nav className="main-menu">
       <ul>
         <li>
-          <Link to="/">Inicio</Link>
+          <NavLink to="/">Inicio</NavLink>
         </li>
         <li>
-          <Link to="/saludo">Saludo</Link>
+          <NavLink to="/criptomonedas">Criptomonedas</NavLink>
         </li>
       </ul>
     </nav>
