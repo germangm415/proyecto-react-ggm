@@ -7,11 +7,12 @@ import Pagina404 from "./components/Pagina404.jsx";
 import Cuadricula from "./components/Cuadricula.jsx";
 import Home from "./components/Home";
 import CriptoPage from "./components/cripto/CriptoPage";
-import Perfil from "./Perfil";
-import { UserContextProvider } from "./context/UserContext"
+import Perfil from "./components/usuarios/Perfil";
+import { UserContextProvider } from "./context/UserContext";
+import Login from "./components/usuarios/Login";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-<UserContextProvider>
+  <UserContextProvider>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
@@ -24,10 +25,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Route path=":id" element={<CriptoPage />} />
         </Route>
 
-        <Route path="/" element={<App />}>
-          <Route path="*" element={<Pagina404 />} />
-        </Route>
+        <Route path="/login" element={<Login />} />
+        <Route path="*" element={<Pagina404 />} />
       </Routes>
     </BrowserRouter>
-    </UserContextProvider>
-)
+  </UserContextProvider>
+);
